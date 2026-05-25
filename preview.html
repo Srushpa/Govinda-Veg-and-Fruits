@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<title>Govinda Fresh SuperMart</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --primary:#1B5E20;
+  --secondary:#43A047;
+  --accent:#81C784;
+  --bg:#F4F7F4;
+  --white:#fff;
+  --text:#1F2937;
+  --light:#6B7280;
+  --danger:#EF4444;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  max-width:480px;
+  margin:auto;
+  padding-bottom:140px;
+}
+
+header{
+  background:linear-gradient(135deg,#1B5E20,#43A047);
+  color:white;
+  padding:20px;
+  border-radius:0 0 30px 30px;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo{
+  width:58px;
+  height:58px;
+  border-radius:18px;
+  background:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:30px;
+}
+
+.brand h1{
+  font-size:20px;
+}
+
+.brand p{
+  font-size:12px;
+  opacity:0.9;
+}
+
+.cart-badge{
+  background:white;
+  color:var(--primary);
+  padding:10px 14px;
+  border-radius:15px;
+  font-weight:700;
+}
+
+.search-box{
+  margin-top:18px;
+}
+
+.search-box input{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:16px;
+  font-size:14px;
+  outline:none;
+}
+
+.banner-slider{
+  padding:18px;
+}
+
+.banner{
+  background:linear-gradient(135deg,#FFE082,#FFD54F);
+  border-radius:25px;
+  padding:22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+.banner h2{
+  font-size:22px;
+  margin-bottom:8px;
+}
+
+.banner p{
+  font-size:13px;
+}
+
+.container{
+  padding:18px;
+}
+
+.card{
+  background:white;
+  border-radius:24px;
+  padding:20px;
+  margin-bottom:20px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.06);
+}
+
+h2{
+  color:var(--primary);
+  margin-bottom:16px;
+}
+
+form{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+input,select{
+  width:100%;
+  padding:15px;
+  border-radius:16px;
+  border:1px solid #ddd;
+  outline:none;
+  font-size:14px;
+}
+
+button{
+  border:none;
+  background:var(--secondary);
+  color:white;
+  padding:14px;
+  border-radius:16px;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.25s;
+}
+
+button:active{
+  transform:scale(0.97);
+}
+
+button:hover{
+  opacity:0.95;
+}
+
+.category-tabs{
+  display:flex;
+  gap:10px;
+  overflow:auto;
+  margin-bottom:18px;
+}
+
+.tab-btn{
+  white-space:nowrap;
+  background:#E8F5E9;
+  color:var(--primary);
+  padding:12px 18px;
+  border-radius:14px;
+  font-weight:600;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.product-card{
+  background:white;
+  border-radius:22px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+
+.product-image{
+  width:100%;
+  height:135px;
+  object-fit:cover;
+}
+
+.badge{
+  position:absolute;
+  top:10px;
+  left:10px;
+  background:#FF5722;
+  color:white;
+  font-size:11px;
+  padding:5px 10px;
+  border-radius:20px;
+}
+
+.product-content{
+  padding:12px;
+}
+
+.product-content h3{
+  font-size:15px;
+  margin-bottom:5px;
+}
+
+.product-content p{
+  font-size:12px;
+  color:var(--light);
+  min-height:35px;
+}
+
+.price-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:10px;
+}
+
+.price{
+  font-size:18px;
+  font-weight:700;
+  color:var(--primary);
+}
+
+.qty-controls{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin-top:12px;
+}
+
+.qty-controls button{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  padding:0;
+}
+
+.qty-controls input{
+  width:55px;
+  padding:8px;
+  text-align:center;
+}
+
+.add-btn{
+  width:100%;
+  margin-top:12px;
+}
+
+.cart-item{
+  padding:14px 0;
+  border-bottom:1px solid #eee;
+}
+
+.total{
+  font-size:24px;
+  font-weight:700;
+  margin-top:18px;
+  color:var(--primary);
+}
+
+.floating-cart{
+  position:fixed;
+  bottom:78px;
+  left:50%;
+  transform:translateX(-50%);
+  width:92%;
+  max-width:450px;
+  background:var(--primary);
+  color:white;
+  border-radius:20px;
+  padding:16px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:999;
+  box-shadow:0 10px 30px rgba(0,0,0,0.22);
+}
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:480px;
+  background:white;
+  display:flex;
+  justify-content:space-around;
+  padding:14px 0;
+  border-top:1px solid #ddd;
+  z-index:1000;
+}
+
+.bottom-nav div{
+  text-align:center;
+  font-size:12px;
+  color:var(--primary);
+}
+
+.offer-strip{
+  background:#E8F5E9;
+  color:var(--primary);
+  padding:14px;
+  border-radius:18px;
+  margin-bottom:20px;
+  font-size:13px;
+  font-weight:600;
+}
+
+.hidden{
+  display:none;
+}
+
+.center{
+  text-align:center;
+}
+
+.toast{
+  position:fixed;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#111827;
+  color:white;
+  padding:12px 18px;
+  border-radius:12px;
+  z-index:5000;
+  display:none;
+}
+
+.checkout-box{
+  margin-top:18px;
+}
+
+.profile-box{
+  background:#F9FAFB;
+  padding:15px;
+  border-radius:18px;
+  margin-bottom:18px;
+}
+
+.delivery-pill{
+  background:#E8F5E9;
+  color:var(--primary);
+  padding:8px 12px;
+  border-radius:50px;
+  display:inline-block;
+  margin-top:10px;
+  font-size:12px;
+}
+
+@media(max-width:420px){
+  .products{
+    grid-template-columns:1fr;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="toast" id="toast"></div>
+
+<header>
+
+<div class="topbar">
+
+<div class="brand">
+<div class="logo">🦚</div>
+
+<div>
+<h1>Govinda Fresh</h1>
+<p>Pune SuperMart Delivery</p>
+</div>
+</div>
+
+<div class="cart-badge">
+🛒 <span id="cartCount">0</span>
+</div>
+
+</div>
+
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="Search groceries, fruits, vegetables..." onkeyup="searchProducts()">
+</div>
+
+<div class="delivery-pill">
+⚡ Delivery in 30 mins
+</div>
+
+</header>
+
+<div class="banner-slider">
+<div class="banner">
+
+<div>
+<h2>Fresh Groceries</h2>
+<p>Vegetables, Fruits & Daily Essentials</p>
+</div>
+
+<div style="font-size:52px;">🛍️</div>
+
+</div>
+</div>
+
+<div class="container">
+
+<div class="offer-strip">
+🔥 Free delivery above ₹499 • Flat 10% OFF on first order
+</div>
+
+<div class="card" id="authSection">
+
+<div id="registerBlock">
+
+<h2>Create Account</h2>
+
+<form id="registrationForm">
+
+<input type="text" placeholder="Full Name" required>
+<input type="email" placeholder="Email ID" required>
+<input type="text" placeholder="WhatsApp Number" required>
+<input type="text" placeholder="Society Name" required>
+<input type="text" placeholder="Building Number" required>
+<input type="text" placeholder="Flat Number" required>
+<input type="password" placeholder="Password" required>
+
+<button type="submit">Register Now</button>
+
+</form>
+
+<br>
+
+<div class="center">
+<p>Already Registered?</p>
+<br>
+<button onclick="showLogin()">Login Here</button>
+</div>
+
+</div>
+
+<div id="loginBlock" style="display:none;">
+
+<h2>Customer Login</h2>
+
+<form id="loginForm">
+
+<input type="text" id="loginWhatsapp" placeholder="WhatsApp Number" required>
+
+<input type="password" placeholder="Password" required>
+
+<button type="submit">Login</button>
+
+</form>
+
+<br>
+
+<div class="center">
+<p>New User?</p>
+<br>
+<button onclick="showRegister()">Create Account</button>
+</div>
+
+</div>
+
+</div>
+
+<div id="shopSection" class="hidden">
+
+<div class="category-tabs">
+
+<button class="tab-btn" onclick="showTab('veg')">🥦 Vegetables</button>
+
+<button class="tab-btn" onclick="showTab('fruits')">🍎 Fruits</button>
+
+<button class="tab-btn" onclick="showTab('grocery')">🛍️ Grocery</button>
+
+</div>
+
+<div id="vegSection" class="products"></div>
+
+<div id="fruitSection" class="products hidden"></div>
+
+<div id="grocerySection" class="products hidden"></div>
+
+<div class="card">
+
+<div class="profile-box">
+
+<strong>Delivery Address</strong>
+
+<p>Pune, Maharashtra</p>
+
+</div>
+
+<h2>Checkout</h2>
+
+<div id="cartItems"></div>
+
+<div class="checkout-box">
+
+<select id="deliverySlot">
+<option>7 AM - 9 AM</option>
+<option>9 AM - 11 AM</option>
+<option>5 PM - 7 PM</option>
+</select>
+
+</div>
+
+<div class="checkout-box">
+
+<select id="paymentMode">
+<option>Cash On Delivery</option>
+<option>UPI</option>
+<option>Credit / Debit Card</option>
+</select>
+
+</div>
+
+<div class="total">
+₹ <span id="cartTotal">0</span>
+</div>
+
+<br>
+
+<button onclick="submitOrder()">
+Place Order
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="floating-cart">
+
+<div>
+<strong><span id="cartItemsCount">0</span> Items</strong>
+<p>₹ <span id="cartTotalBottom">0</span></p>
+</div>
+
+<button onclick="window.scrollTo(0,document.body.scrollHeight)">
+View Cart
+</button>
+
+</div>
+
+<div class="bottom-nav">
+
+<div>🏠<br>Home</div>
+<div>📦<br>Orders</div>
+<div>🛒<br>Cart</div>
+<div>👤<br>Profile</div>
+
+</div>
+
+<script>
+
+const sampleProducts = {
+
+vegetables:[
+["Tomato","Farm fresh tomatoes","40","https://images.unsplash.com/photo-1546094096-0df4bcaaa337"],
+["Potato","Organic potatoes","30","https://images.unsplash.com/photo-1518977676601-b53f82aba655"],
+["Onion","Premium onions","35","https://images.unsplash.com/photo-1508747703725-719777637510"]
+],
+
+fruits:[
+["Apple","Fresh apples","120","https://images.unsplash.com/photo-1567306226416-28f0efdc88ce"],
+["Banana","Fresh bananas","60","https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e"],
+["Orange","Juicy oranges","90","https://images.unsplash.com/photo-1580052614034-c55d20bfee3b"]
+],
+
+grocery:[
+["Rice","Premium basmati rice","85","https://images.unsplash.com/photo-1586201375761-83865001e31c"],
+["Sugar","Fine crystal sugar","48","https://images.unsplash.com/photo-1615485290382-441e4d049cb5"],
+["Cooking Oil","Refined sunflower oil","160","https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5"]
+]
+
+};
+
+let cart = [];
+
+function showToast(msg){
+
+  const toast =
+  document.getElementById('toast');
+
+  toast.innerText = msg;
+
+  toast.style.display='block';
+
+  setTimeout(()=>{
+    toast.style.display='none';
+  },2000);
+
+}
+
+function showLogin(){
+
+  document.getElementById('registerBlock').style.display='none';
+  document.getElementById('loginBlock').style.display='block';
+
+}
+
+function showRegister(){
+
+  document.getElementById('registerBlock').style.display='block';
+  document.getElementById('loginBlock').style.display='none';
+
+}
+
+document.getElementById('registrationForm')
+.addEventListener('submit',function(e){
+
+e.preventDefault();
+
+showToast("Registration successful");
+
+showLogin();
+
+});
+
+document.getElementById('loginForm')
+.addEventListener('submit',function(e){
+
+e.preventDefault();
+
+document.getElementById('authSection')
+.style.display='none';
+
+document.getElementById('shopSection')
+.classList.remove('hidden');
+
+loadProducts();
+
+showToast("Welcome back");
+
+});
+
+function loadProducts(){
+
+  renderProducts(sampleProducts.vegetables,'vegSection');
+
+  renderProducts(sampleProducts.fruits,'fruitSection');
+
+  renderProducts(sampleProducts.grocery,'grocerySection');
+
+}
+
+function renderProducts(data,section){
+
+let html='';
+
+data.forEach(item=>{
+
+html += `
+
+<div class="product-card product-item">
+
+<div class="badge">Fresh</div>
+
+<img src="${item[3]}" class="product-image">
+
+<div class="product-content">
+
+<h3>${item[0]}</h3>
+
+<p>${item[1]}</p>
+
+<div class="price-row">
+<div class="price">₹ ${item[2]}</div>
+<div style="font-size:11px;color:#6B7280;">per kg</div>
+</div>
+
+<div class="qty-controls">
+
+<button onclick="changeQty('${item[0]}',-1)">−</button>
+
+<input type="number" value="1" min="1" id="qty-${item[0]}">
+
+<button onclick="changeQty('${item[0]}',1)">+</button>
+
+</div>
+
+<button class="add-btn"
+onclick="addToCart('${item[0]}','${item[2]}')">
+
+Add To Cart
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+document.getElementById(section).innerHTML = html;
+
+}
+
+function showTab(tab){
+
+document.getElementById('vegSection').classList.add('hidden');
+document.getElementById('fruitSection').classList.add('hidden');
+document.getElementById('grocerySection').classList.add('hidden');
+
+if(tab==='veg'){
+document.getElementById('vegSection').classList.remove('hidden');
+}
+
+if(tab==='fruits'){
+document.getElementById('fruitSection').classList.remove('hidden');
+}
+
+if(tab==='grocery'){
+document.getElementById('grocerySection').classList.remove('hidden');
+}
+
+}
+
+function searchProducts(){
+
+const input =
+document.getElementById('searchInput')
+.value.toLowerCase();
+
+const items =
+document.querySelectorAll('.product-item');
+
+items.forEach(item=>{
+
+const text =
+item.innerText.toLowerCase();
+
+item.style.display =
+text.includes(input)
+? 'block'
+: 'none';
+
+});
+
+}
+
+function changeQty(item,change){
+
+const input =
+document.getElementById(`qty-${item}`);
+
+let val = Number(input.value);
+
+val += change;
+
+if(val<1) val=1;
+
+input.value = val;
+
+}
+
+function addToCart(item,price){
+
+const qty =
+Number(document.getElementById(`qty-${item}`).value);
+
+const total =
+qty * Number(price);
+
+cart.push({
+item,
+qty,
+price,
+total
+});
+
+renderCart();
+
+showToast("Added to cart");
+
+}
+
+function renderCart(){
+
+let html='';
+
+let grandTotal=0;
+
+cart.forEach(c=>{
+
+grandTotal += c.total;
+
+html += `
+
+<div class="cart-item">
+
+<strong>${c.item}</strong><br>
+
+Qty: ${c.qty}<br>
+
+₹ ${c.total}
+
+</div>
+
+`;
+
+});
+
+document.getElementById('cartItems')
+.innerHTML = html;
+
+document.getElementById('cartTotal')
+.innerText = grandTotal;
+
+document.getElementById('cartTotalBottom')
+.innerText = grandTotal;
+
+document.getElementById('cartCount')
+.innerText = cart.length;
+
+document.getElementById('cartItemsCount')
+.innerText = cart.length;
+
+}
+
+function submitOrder(){
+
+if(cart.length===0){
+
+showToast("Cart is empty");
+
+return;
+
+}
+
+let total=0;
+
+cart.forEach(c=>{
+total += c.total;
+});
+
+const orderText =
+cart.map(c =>
+`${c.item} x ${c.qty} = ₹${c.total}`
+).join('\n');
+
+const finalMessage = `
+🛒 NEW ORDER
+
+Items:
+${orderText}
+
+Delivery Slot:
+${document.getElementById('deliverySlot').value}
+
+Payment:
+${document.getElementById('paymentMode').value}
+
+Total Amount:
+₹${total}
+`;
+
+window.open(
+`https://wa.me/919999999999?text=${encodeURIComponent(finalMessage)}`,
+'_blank'
+);
+
+showToast("Order placed successfully");
+
+cart=[];
+
+renderCart();
+
+}
+
+</script>
+
+</body>
+</html>
