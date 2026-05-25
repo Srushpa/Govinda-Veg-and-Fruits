@@ -4,328 +4,464 @@
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<title>Govinda</title>
 
-<title>Govinda Fresh</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
-:root{
-  --primary:#1B5E20;
-  --secondary:#2E7D32;
-  --bg:#F4F7F4;
-  --card:#ffffff;
-  --text:#1F2937;
-}
-
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-  font-family:'Poppins',sans-serif;
-  background:var(--bg);
-  max-width:430px;
-  margin:auto;
-  color:var(--text);
-  padding-bottom:120px;
+font-family:'Poppins',sans-serif;
+background:#f3f7f2;
+max-width:430px;
+margin:auto;
+overflow-x:hidden;
+padding-bottom:120px;
 }
 
-header{
-  background:linear-gradient(135deg,#1B5E20,#43A047);
-  color:white;
-  padding:16px;
-  border-radius:0 0 24px 24px;
-  position:sticky;
-  top:0;
-  z-index:1000;
-  box-shadow:0 5px 18px rgba(0,0,0,0.15);
+/* ================= HERO ================= */
+
+.hero{
+
+height:330px;
+
+background:
+linear-gradient(
+rgba(0,0,0,0.06),
+rgba(0,0,0,0.12)
+),
+
+url('https://m.media-amazon.com/images/I/71hiX6JOsIL.jpg');
+
+background-size:cover;
+background-position:center;
+
+border-bottom-left-radius:42px;
+border-bottom-right-radius:42px;
+
+position:relative;
+overflow:hidden;
+
+display:flex;
+justify-content:center;
+align-items:flex-start;
+
+padding-top:35px;
 }
 
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+/* overlay */
+
+.hero::before{
+
+content:'';
+
+position:absolute;
+inset:0;
+
+background:
+linear-gradient(
+135deg,
+rgba(34,197,94,0.10),
+rgba(251,191,36,0.08),
+rgba(34,197,94,0.10)
+);
+
+z-index:1;
 }
 
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
+/* sunlight glow */
+
+.hero::after{
+
+content:'';
+
+position:absolute;
+
+width:300px;
+height:300px;
+
+background:rgba(255,255,255,0.18);
+
+filter:blur(90px);
+
+border-radius:50%;
+
+top:-80px;
+right:-40px;
+
+z-index:1;
 }
 
-.logo{
-  width:50px;
-  height:50px;
-  border-radius:16px;
-  background:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:28px;
+/* floating fruits */
+
+.fruit{
+position:absolute;
+font-size:34px;
+animation:float 4s ease-in-out infinite;
+opacity:0.95;
+z-index:2;
 }
 
-.brand h1{
-  font-size:19px;
+.fruit1{
+top:40px;
+left:20px;
 }
 
-.brand p{
-  font-size:11px;
-  opacity:0.9;
+.fruit2{
+top:70px;
+right:28px;
+animation-delay:1s;
 }
 
-.cart-badge{
-  background:white;
-  color:var(--primary);
-  padding:9px 14px;
-  border-radius:14px;
-  font-weight:700;
+.fruit3{
+bottom:90px;
+left:35px;
+animation-delay:2s;
 }
 
-.search-box{
-  margin-top:16px;
+.fruit4{
+bottom:60px;
+right:30px;
+animation-delay:1.5s;
 }
 
-.search-box input{
-  width:100%;
-  padding:13px;
-  border:none;
-  border-radius:14px;
-  outline:none;
-  font-size:14px;
+.fruit5{
+top:130px;
+left:80px;
+font-size:28px;
+animation-delay:0.7s;
 }
 
-.banner{
-  margin:16px;
-  background:linear-gradient(135deg,#FFE082,#FFD54F);
-  border-radius:20px;
-  padding:16px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  box-shadow:0 5px 18px rgba(0,0,0,0.08);
+.fruit6{
+bottom:120px;
+right:100px;
+font-size:30px;
+animation-delay:2.5s;
 }
 
-.banner h2{
-  font-size:17px;
-  margin-bottom:6px;
+@keyframes float{
+
+0%{
+transform:translateY(0px);
 }
 
-.banner p{
-  font-size:12px;
+50%{
+transform:translateY(-14px);
 }
 
-.container{
-  padding:16px;
+100%{
+transform:translateY(0px);
 }
 
-.card{
-  background:var(--card);
-  border-radius:22px;
-  padding:18px;
-  box-shadow:0 5px 18px rgba(0,0,0,0.06);
-  margin-bottom:20px;
 }
 
-h2{
-  margin-bottom:16px;
-  color:var(--primary);
-  font-size:20px;
+/* ================= HERO CONTENT ================= */
+
+.hero-content{
+
+position:relative;
+z-index:5;
+
+width:100%;
+
+display:flex;
+justify-content:flex-start;
+align-items:center;
+flex-direction:column;
 }
 
-form{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
+/* GOVINDA TITLE */
+
+.hero-content h1{
+
+font-size:35px;
+font-weight:800;
+
+color:#ff9933;
+
+letter-spacing:1px;
+
+line-height:0.001;
+
+text-align:center;
+
+margin-top:0.05px;
+
+text-shadow:
+0 5px 14px rgba(0,0,0,0.25);
 }
 
-input,select{
-  width:100%;
-  padding:13px;
-  border-radius:14px;
-  border:1px solid #ddd;
-  font-size:14px;
-  outline:none;
+.peacock{
+color:#ffd43b;
 }
 
-button{
-  border:none;
-  background:var(--secondary);
-  color:white;
-  padding:13px;
-  border-radius:14px;
-  font-size:14px;
-  font-weight:600;
-  cursor:pointer;
-  transition:0.3s;
+/* ================= AUTH ================= */
+
+.auth-wrapper{
+
+margin-top:-40px;
+padding:0 16px;
+
+position:relative;
+z-index:10;
 }
 
-button:active{
-  transform:scale(0.97);
+.auth-card{
+
+background:white;
+
+border-radius:36px;
+
+padding:18px;
+
+box-shadow:
+0 14px 34px rgba(0,0,0,0.10);
 }
 
-.center{
-  text-align:center;
-}
-
-.hidden{
-  display:none;
-}
+/* tabs */
 
 .tabs{
-  display:flex;
-  gap:10px;
-  margin-bottom:18px;
+
+display:flex;
+
+background:#f4f4f5;
+
+border-radius:18px;
+
+padding:4px;
+
+margin-bottom:18px;
 }
 
-.tab-btn{
-  flex:1;
-  background:#E8F5E9;
-  color:var(--primary);
+.tab{
+
+flex:1;
+
+padding:14px 8px;
+
+border-radius:16px;
+
+font-size:14px;
+font-weight:600;
+
+text-align:center;
+
+cursor:pointer;
+
+transition:0.25s;
+
+color:#71717a;
 }
 
-.products{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
+.active-tab{
+
+background:white;
+
+color:#0f9f0f;
+
+box-shadow:
+0 5px 14px rgba(0,0,0,0.06);
+
+border-bottom:3px solid #16a34a;
 }
 
-.product-card{
-  background:white;
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow:0 4px 16px rgba(0,0,0,0.08);
+/* form */
+
+.form-grid{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
 }
 
-.product-image{
-  width:100%;
-  height:110px;
-  object-fit:cover;
+.full{
+grid-column:1 / 3;
 }
 
-.product-content{
-  padding:12px;
+.input-box{
+position:relative;
 }
 
-.product-content h3{
-  font-size:14px;
-  margin-bottom:5px;
+.input-box span{
+
+position:absolute;
+
+left:18px;
+top:16px;
+
+font-size:22px;
 }
 
-.product-content p{
-  font-size:11px;
-  color:#666;
-  min-height:26px;
+.input-box input{
+
+width:100%;
+height:58px;
+
+border-radius:18px;
+
+border:1px solid #e5e7eb;
+
+background:#fafafa;
+
+padding-left:56px;
+padding-right:16px;
+
+font-size:13px;
+
+outline:none;
+
+transition:0.25s;
 }
 
-.price{
-  font-size:18px;
-  font-weight:700;
-  color:var(--primary);
-  margin-top:8px;
+.input-box input:focus{
+
+background:white;
+
+border-color:#16a34a;
+
+box-shadow:
+0 0 0 4px rgba(22,163,74,0.08);
 }
 
-.qty-controls{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:8px;
-  margin-top:10px;
+/* buttons */
+
+.main-btn{
+
+width:100%;
+height:60px;
+
+margin-top:20px;
+
+border:none;
+
+border-radius:18px;
+
+background:
+linear-gradient(135deg,#13b113,#048104);
+
+color:white;
+
+font-size:22px;
+font-weight:700;
+
+cursor:pointer;
+
+box-shadow:
+0 10px 24px rgba(22,163,74,0.25);
+
+transition:0.25s;
 }
 
-.qty-controls button{
-  width:28px;
-  height:28px;
-  border-radius:50%;
-  padding:0;
+.main-btn:hover{
+transform:translateY(-2px);
 }
 
-.qty-controls input{
-  width:50px;
-  padding:8px;
-  text-align:center;
+.bottom-login{
+
+margin-top:22px;
+
+text-align:center;
+
+font-size:16px;
+color:#71717a;
+
+position:relative;
 }
 
-.add-btn{
-  width:100%;
-  margin-top:10px;
+.bottom-login::before,
+.bottom-login::after{
+
+content:'';
+
+display:inline-block;
+
+width:24%;
+height:1px;
+
+background:#e5e7eb;
+
+vertical-align:middle;
+
+margin:0 10px;
 }
 
-.cart-item{
-  border-bottom:1px solid #eee;
-  padding:12px 0;
+.login-btn{
+
+width:100%;
+height:58px;
+
+margin-top:16px;
+
+border-radius:18px;
+
+border:2px solid #16a34a;
+
+background:white;
+
+color:#15803d;
+
+font-size:22px;
+font-weight:700;
+
+cursor:pointer;
 }
 
-.total{
-  margin-top:16px;
-  font-size:22px;
-  font-weight:700;
-  color:#1B5E20;
+/* security */
+
+.security{
+
+margin:18px auto 0;
+
+width:max-content;
+
+background:#eefbf1;
+
+padding:12px 22px;
+
+border-radius:999px;
+
+font-size:14px;
+
+color:#4b5563;
+
+box-shadow:
+0 4px 10px rgba(0,0,0,0.05);
 }
 
-.floating-cart{
-  position:fixed;
-  bottom:72px;
-  left:50%;
-  transform:translateX(-50%);
-  width:92%;
-  max-width:420px;
-  background:#1B5E20;
-  color:white;
-  padding:14px 18px;
-  border-radius:18px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  z-index:999;
-  box-shadow:0 8px 25px rgba(0,0,0,0.2);
+.security b{
+color:#15803d;
 }
 
-.bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:50%;
-  transform:translateX(-50%);
-  width:100%;
-  max-width:430px;
-  background:white;
-  display:flex;
-  justify-content:space-around;
-  padding:12px 0;
-  border-top:1px solid #ddd;
-}
-
-.bottom-nav div{
-  font-size:12px;
-  text-align:center;
-  color:#1B5E20;
-}
+/* toast */
 
 .toast{
-  position:fixed;
-  top:18px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#111827;
-  color:white;
-  padding:12px 18px;
-  border-radius:12px;
-  display:none;
-  z-index:9999;
-}
 
-@media(max-width:420px){
+position:fixed;
 
-.products{
-  grid-template-columns:1fr;
-}
+top:20px;
+left:50%;
 
+transform:translateX(-50%);
+
+background:#111827;
+
+color:white;
+
+padding:12px 18px;
+
+border-radius:14px;
+
+display:none;
+
+z-index:9999;
 }
 
 </style>
@@ -336,605 +472,208 @@ button:active{
 
 <div class="toast" id="toast"></div>
 
-<header>
+<!-- HERO -->
 
-<div class="topbar">
+<section class="hero">
 
-<div class="brand">
+<div class="fruit fruit1">🍎</div>
+<div class="fruit fruit2">🥕</div>
+<div class="fruit fruit3">🍋</div>
+<div class="fruit fruit4">🥬</div>
+<div class="fruit fruit5">🥦</div>
+<div class="fruit fruit6">🍇</div>
 
-<div class="logo">🦚</div>
+<div class="hero-content">
 
-<div>
-<h1>Govinda Fresh</h1>
-<p>Fresh Fruits & Vegetables</p>
-</div>
-
-</div>
-
-<div class="cart-badge">
-🛒 <span id="cartCount">0</span>
-</div>
+<h1>
+Govinda<span class="peacock">🪶</span>
+</h1>
 
 </div>
 
-<div class="search-box hidden" id="searchSection">
+</section>
 
-<input
-type="text"
-id="searchInput"
-placeholder="Search products..."
-onkeyup="searchProducts()">
+<!-- AUTH -->
 
-</div>
+<div class="auth-wrapper" id="authSection">
 
-</header>
-
-<div class="banner">
-<div>
-<h2>Fresh Daily Delivery</h2>
-<p>Pune Fast Delivery</p>
-</div>
-
-<div style="font-size:40px;">🥬</div>
-</div>
-
-<div class="container">
-
-<div class="card" id="authSection">
-
-<div id="registerBlock">
-
-<h2>Create Account</h2>
-
-<form id="registrationForm">
-
-<input type="text"
-placeholder="Full Name"
-required>
-
-<input type="email"
-placeholder="Email Address"
-required>
-
-<input type="text"
-id="whatsappNumber"
-placeholder="WhatsApp Number"
-required>
-
-<input type="text"
-placeholder="Society Name"
-required>
-
-<input type="text"
-placeholder="Building Number"
-required>
-
-<input type="text"
-placeholder="Flat Number"
-required>
-
-<input type="password"
-placeholder="Create Password"
-required>
-
-<button type="submit">
-Register Now
-</button>
-
-</form>
-
-<br>
-
-<div class="center">
-
-<p>Already Registered?</p>
-
-<br>
-
-<button onclick="showLogin()">
-Login Here
-</button>
-
-</div>
-
-</div>
-
-<div id="loginBlock"
-style="display:none;">
-
-<h2>Customer Login</h2>
-
-<form id="loginForm">
-
-<input
-type="text"
-id="loginWhatsapp"
-placeholder="WhatsApp Number"
-required>
-
-<input
-type="password"
-placeholder="Password"
-required>
-
-<button type="submit">
-Login
-</button>
-
-</form>
-
-<br>
-
-<div class="center">
-
-<p>New User?</p>
-
-<br>
-
-<button onclick="showRegister()">
-Create Account
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<div id="shopSection"
-class="hidden">
+<div class="auth-card">
 
 <div class="tabs">
 
-<button class="tab-btn"
-onclick="showTab('veg')">
+<div
+class="tab active-tab"
+id="registerTab"
+onclick="showRegister()">
 
-🥦 Vegetables
-
-</button>
-
-<button class="tab-btn"
-onclick="showTab('fruits')">
-
-🍎 Fruits
-
-</button>
+👤 Create Account
 
 </div>
 
-<div id="vegSection"
-class="products"></div>
+<div
+class="tab"
+id="loginTab"
+onclick="showLogin()">
 
-<div id="fruitSection"
-class="products hidden"></div>
-
-<div class="card">
-
-<h2>Your Cart</h2>
-
-<div id="cartItems"></div>
-
-<br>
-
-<select id="deliverySlot">
-
-<option>7 AM - 9 AM</option>
-<option>9 AM - 11 AM</option>
-<option>5 PM - 7 PM</option>
-
-</select>
-
-<br><br>
-
-<select id="paymentMode">
-
-<option>Cash On Delivery</option>
-<option>UPI</option>
-
-</select>
-
-<div class="total">
-₹ <span id="cartTotal">0</span>
-</div>
-
-<br>
-
-<button onclick="submitOrder()">
-Place Order
-</button>
+🔐 Login
 
 </div>
 
 </div>
 
+<!-- REGISTER -->
+
+<div id="registerForm">
+
+<div class="form-grid">
+
+<div class="input-box">
+<span>👤</span>
+<input type="text" placeholder="Full Name">
 </div>
 
-<div class="floating-cart hidden"
-id="floatingCart">
+<div class="input-box">
+<span>✉️</span>
+<input type="email" placeholder="Email Address">
+</div>
 
-<div>
+<div class="input-box full">
+<span>📱</span>
+<input type="text" id="regWhatsapp" placeholder="WhatsApp Number">
+</div>
 
-<strong>
-<span id="cartItemsCount">0</span> Items
-</strong>
+<div class="input-box full">
+<span>🏢</span>
+<input type="text" placeholder="Society / Apartment Name">
+</div>
 
-<p>
-₹ <span id="cartTotalBottom">0</span>
-</p>
+<div class="input-box">
+<span>🏠</span>
+<input type="text" placeholder="Building Number">
+</div>
+
+<div class="input-box">
+<span>🚪</span>
+<input type="text" placeholder="Flat Number">
+</div>
+
+<div class="input-box full">
+<span>🔒</span>
+<input type="password" placeholder="Create Password">
+</div>
 
 </div>
 
 <button
-onclick="window.scrollTo(0,document.body.scrollHeight)">
+class="main-btn"
+onclick="registerUser()">
 
-View Cart
+➕ Create Account
+
+</button>
+
+<div class="bottom-login">
+
+Already have an account?
+
+<button
+class="login-btn"
+onclick="showLogin()">
+
+↪ Login Here
 
 </button>
 
 </div>
 
-<div class="bottom-nav hidden"
-id="bottomNav">
+</div>
 
-<div>🏠<br>Home</div>
-<div>🛒<br>Cart</div>
-<div>👤<br>Profile</div>
+<!-- LOGIN -->
+
+<div id="loginForm" style="display:none;">
+
+<div class="form-grid">
+
+<div class="input-box full">
+<span>📱</span>
+<input type="text" id="loginWhatsapp" placeholder="WhatsApp Number">
+</div>
+
+<div class="input-box full">
+<span>🔒</span>
+<input type="password" placeholder="Password">
+</div>
+
+</div>
+
+<button
+class="main-btn"
+onclick="loginUser()">
+
+🔓 Login
+
+</button>
+
+</div>
+
+</div>
+
+<div class="security">
+🛡️ Your information is <b>safe & secure</b> with us
+</div>
 
 </div>
 
 <script>
 
-let currentWhatsapp = "";
+function showRegister(){
 
-let cart = [];
+document.getElementById('registerForm').style.display='block';
+document.getElementById('loginForm').style.display='none';
 
-const vegProducts = [
-
-["Tomato","Fresh tomatoes","40","https://images.unsplash.com/photo-1546094096-0df4bcaaa337"],
-
-["Potato","Organic potatoes","30","https://images.unsplash.com/photo-1518977676601-b53f82aba655"],
-
-["Onion","Premium onions","35","https://images.unsplash.com/photo-1508747703725-719777637510"]
-
-];
-
-const fruitProducts = [
-
-["Apple","Fresh apples","120","https://images.unsplash.com/photo-1567306226416-28f0efdc88ce"],
-
-["Banana","Fresh bananas","60","https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e"],
-
-["Orange","Juicy oranges","90","https://images.unsplash.com/photo-1580052614034-c55d20bfee3b"]
-
-];
-
-function showToast(message){
-
-const toast =
-document.getElementById('toast');
-
-toast.innerText = message;
-
-toast.style.display='block';
-
-setTimeout(()=>{
-toast.style.display='none';
-},2000);
+document.getElementById('registerTab').classList.add('active-tab');
+document.getElementById('loginTab').classList.remove('active-tab');
 
 }
 
 function showLogin(){
 
-document.getElementById('registerBlock')
-.style.display='none';
+document.getElementById('registerForm').style.display='none';
+document.getElementById('loginForm').style.display='block';
 
-document.getElementById('loginBlock')
-.style.display='block';
-
-}
-
-function showRegister(){
-
-document.getElementById('registerBlock')
-.style.display='block';
-
-document.getElementById('loginBlock')
-.style.display='none';
+document.getElementById('loginTab').classList.add('active-tab');
+document.getElementById('registerTab').classList.remove('active-tab');
 
 }
 
-document.getElementById('registrationForm')
-.addEventListener('submit',function(e){
+function registerUser(){
 
-e.preventDefault();
+const toast = document.getElementById('toast');
 
-showToast("Registration successful");
+toast.innerText = "Registration Successful";
+toast.style.display = 'block';
 
+setTimeout(()=>{
+toast.style.display = 'none';
 showLogin();
-
-});
-
-document.getElementById('loginForm')
-.addEventListener('submit',function(e){
-
-e.preventDefault();
-
-currentWhatsapp =
-document.getElementById('loginWhatsapp').value;
-
-document.getElementById('authSection')
-.style.display='none';
-
-document.getElementById('shopSection')
-.classList.remove('hidden');
-
-document.getElementById('searchSection')
-.classList.remove('hidden');
-
-document.getElementById('floatingCart')
-.classList.remove('hidden');
-
-document.getElementById('bottomNav')
-.classList.remove('hidden');
-
-loadProducts();
-
-showToast("Welcome Back");
-
-});
-
-function loadProducts(){
-
-renderProducts(vegProducts,'vegSection');
-
-renderProducts(fruitProducts,'fruitSection');
+},2000);
 
 }
 
-function renderProducts(data,section){
+function loginUser(){
 
-let html='';
+const toast = document.getElementById('toast');
 
-data.forEach(item=>{
+toast.innerText = "Login Successful";
+toast.style.display = 'block';
 
-html += `
-
-<div class="product-card product-item">
-
-<img src="${item[3]}"
-class="product-image">
-
-<div class="product-content">
-
-<h3>${item[0]}</h3>
-
-<p>${item[1]}</p>
-
-<div class="price">
-₹ ${item[2]}
-</div>
-
-<div class="qty-controls">
-
-<button onclick="changeQty('${item[0]}',-1)">
-−
-</button>
-
-<input
-type="number"
-value="1"
-min="1"
-id="qty-${item[0]}">
-
-<button onclick="changeQty('${item[0]}',1)">
-+
-</button>
-
-</div>
-
-<button
-class="add-btn"
-onclick="addToCart('${item[0]}','${item[2]}')">
-
-Add To Cart
-
-</button>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-document.getElementById(section)
-.innerHTML = html;
-
-}
-
-function showTab(tab){
-
-document.getElementById('vegSection')
-.classList.add('hidden');
-
-document.getElementById('fruitSection')
-.classList.add('hidden');
-
-if(tab==='veg'){
-
-document.getElementById('vegSection')
-.classList.remove('hidden');
-
-}
-
-if(tab==='fruits'){
-
-document.getElementById('fruitSection')
-.classList.remove('hidden');
-
-}
-
-}
-
-function searchProducts(){
-
-const input =
-document.getElementById('searchInput')
-.value.toLowerCase();
-
-const items =
-document.querySelectorAll('.product-item');
-
-items.forEach(item=>{
-
-const text =
-item.innerText.toLowerCase();
-
-item.style.display =
-text.includes(input)
-? 'block'
-: 'none';
-
-});
-
-}
-
-function changeQty(item,change){
-
-const input =
-document.getElementById(`qty-${item}`);
-
-let value = Number(input.value);
-
-value += change;
-
-if(value < 1) value = 1;
-
-input.value = value;
-
-}
-
-function addToCart(item,price){
-
-const qty =
-Number(document.getElementById(`qty-${item}`).value);
-
-const total =
-qty * Number(price);
-
-cart.push({
-item,
-qty,
-price,
-total
-});
-
-renderCart();
-
-showToast("Added To Cart");
-
-}
-
-function renderCart(){
-
-let html='';
-
-let grandTotal=0;
-
-cart.forEach(c=>{
-
-grandTotal += c.total;
-
-html += `
-
-<div class="cart-item">
-
-<strong>${c.item}</strong><br>
-
-Qty: ${c.qty}<br>
-
-₹ ${c.total}
-
-</div>
-
-`;
-
-});
-
-document.getElementById('cartItems')
-.innerHTML = html;
-
-document.getElementById('cartTotal')
-.innerText = grandTotal;
-
-document.getElementById('cartTotalBottom')
-.innerText = grandTotal;
-
-document.getElementById('cartCount')
-.innerText = cart.length;
-
-document.getElementById('cartItemsCount')
-.innerText = cart.length;
-
-}
-
-function submitOrder(){
-
-if(cart.length===0){
-
-showToast("Cart Is Empty");
-
-return;
-
-}
-
-let total=0;
-
-cart.forEach(c=>{
-total += c.total;
-});
-
-const orderText =
-cart.map(c =>
-`${c.item} x ${c.qty} = ₹${c.total}`
-).join('\n');
-
-const message = `
-
-🛒 Govinda Fresh Order
-
-Items:
-${orderText}
-
-Delivery Slot:
-${document.getElementById('deliverySlot').value}
-
-Payment:
-${document.getElementById('paymentMode').value}
-
-Total:
-₹${total}
-
-Thank You ❤️
-
-`;
-
-window.open(
-`https://wa.me/91${currentWhatsapp}?text=${encodeURIComponent(message)}`,
-'_blank'
-);
-
-showToast("Order Placed Successfully");
-
-cart=[];
-
-renderCart();
+setTimeout(()=>{
+toast.style.display = 'none';
+},2000);
 
 }
 
 </script>
 
 </body>
-
 </html>
