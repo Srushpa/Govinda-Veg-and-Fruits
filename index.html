@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<title>Govinda Fresh SuperMart</title>
 
-<title>Govinda Fresh Veg & Fruits</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+:root{
+  --primary:#1B5E20;
+  --secondary:#43A047;
+  --accent:#81C784;
+  --bg:#F4F7F4;
+  --white:#fff;
+  --text:#1F2937;
+  --light:#6B7280;
+  --danger:#EF4444;
+}
 
 *{
   margin:0;
@@ -19,124 +28,313 @@ content="width=device-width, initial-scale=1.0">
 }
 
 body{
-  font-family:Arial,sans-serif;
-  background:#f5f5f5;
-  color:#333;
+  font-family:'Poppins',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  max-width:480px;
+  margin:auto;
+  padding-bottom:140px;
 }
 
 header{
-  background:linear-gradient(135deg,#2e7d32,#66bb6a);
+  background:linear-gradient(135deg,#1B5E20,#43A047);
   color:white;
-  text-align:center;
-  padding:30px 20px;
+  padding:20px;
+  border-radius:0 0 30px 30px;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
 }
 
-.govinda{
-  font-size:60px;
-  margin-bottom:10px;
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-header h1{
-  font-size:38px;
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo{
+  width:58px;
+  height:58px;
+  border-radius:18px;
+  background:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:30px;
+}
+
+.brand h1{
+  font-size:20px;
+}
+
+.brand p{
+  font-size:12px;
+  opacity:0.9;
+}
+
+.cart-badge{
+  background:white;
+  color:var(--primary);
+  padding:10px 14px;
+  border-radius:15px;
+  font-weight:700;
+}
+
+.search-box{
+  margin-top:18px;
+}
+
+.search-box input{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:16px;
+  font-size:14px;
+  outline:none;
+}
+
+.banner-slider{
+  padding:18px;
+}
+
+.banner{
+  background:linear-gradient(135deg,#FFE082,#FFD54F);
+  border-radius:25px;
+  padding:22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+.banner h2{
+  font-size:22px;
+  margin-bottom:8px;
+}
+
+.banner p{
+  font-size:13px;
 }
 
 .container{
-  width:92%;
-  max-width:1200px;
-  margin:auto;
-  padding:20px;
+  padding:18px;
 }
 
 .card{
   background:white;
-  padding:25px;
-  border-radius:15px;
-  margin-bottom:25px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  border-radius:24px;
+  padding:20px;
+  margin-bottom:20px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.06);
 }
 
 h2{
-  margin-bottom:20px;
-  color:#2e7d32;
+  color:var(--primary);
+  margin-bottom:16px;
 }
 
 form{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:15px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
 }
 
-input{
-  padding:12px;
-  border:1px solid #ccc;
-  border-radius:8px;
-  font-size:15px;
+input,select{
+  width:100%;
+  padding:15px;
+  border-radius:16px;
+  border:1px solid #ddd;
+  outline:none;
+  font-size:14px;
 }
 
 button{
-  background:#2e7d32;
-  color:white;
   border:none;
-  padding:12px 20px;
-  border-radius:8px;
-  cursor:pointer;
+  background:var(--secondary);
+  color:white;
+  padding:14px;
+  border-radius:16px;
   font-size:15px;
-  font-weight:bold;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.25s;
+}
+
+button:active{
+  transform:scale(0.97);
 }
 
 button:hover{
-  background:#1b5e20;
+  opacity:0.95;
 }
 
-.tabs{
-  margin-bottom:20px;
+.category-tabs{
+  display:flex;
+  gap:10px;
+  overflow:auto;
+  margin-bottom:18px;
 }
 
 .tab-btn{
-  margin-right:10px;
+  white-space:nowrap;
+  background:#E8F5E9;
+  color:var(--primary);
+  padding:12px 18px;
+  border-radius:14px;
+  font-weight:600;
 }
 
 .products{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:20px;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
 }
 
 .product-card{
-  background:#fafafa;
-  border:1px solid #ddd;
-  border-radius:12px;
-  padding:18px;
+  background:white;
+  border-radius:22px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
 }
 
-.product-card h3{
-  color:#2e7d32;
-  margin-bottom:10px;
+.product-image{
+  width:100%;
+  height:135px;
+  object-fit:cover;
+}
+
+.badge{
+  position:absolute;
+  top:10px;
+  left:10px;
+  background:#FF5722;
+  color:white;
+  font-size:11px;
+  padding:5px 10px;
+  border-radius:20px;
+}
+
+.product-content{
+  padding:12px;
+}
+
+.product-content h3{
+  font-size:15px;
+  margin-bottom:5px;
+}
+
+.product-content p{
+  font-size:12px;
+  color:var(--light);
+  min-height:35px;
+}
+
+.price-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:10px;
 }
 
 .price{
-  font-size:22px;
-  font-weight:bold;
-  color:#1b5e20;
-  margin-top:10px;
+  font-size:18px;
+  font-weight:700;
+  color:var(--primary);
 }
 
-.qty-box{
-  width:80px;
+.qty-controls{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin-top:12px;
+}
+
+.qty-controls button{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  padding:0;
+}
+
+.qty-controls input{
+  width:55px;
   padding:8px;
-  margin-top:10px;
+  text-align:center;
+}
+
+.add-btn{
+  width:100%;
+  margin-top:12px;
 }
 
 .cart-item{
-  border-bottom:1px solid #ddd;
-  padding:10px 0;
+  padding:14px 0;
+  border-bottom:1px solid #eee;
 }
 
 .total{
   font-size:24px;
-  font-weight:bold;
-  color:#1b5e20;
-  margin-top:20px;
+  font-weight:700;
+  margin-top:18px;
+  color:var(--primary);
+}
+
+.floating-cart{
+  position:fixed;
+  bottom:78px;
+  left:50%;
+  transform:translateX(-50%);
+  width:92%;
+  max-width:450px;
+  background:var(--primary);
+  color:white;
+  border-radius:20px;
+  padding:16px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:999;
+  box-shadow:0 10px 30px rgba(0,0,0,0.22);
+}
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:480px;
+  background:white;
+  display:flex;
+  justify-content:space-around;
+  padding:14px 0;
+  border-top:1px solid #ddd;
+  z-index:1000;
+}
+
+.bottom-nav div{
+  text-align:center;
+  font-size:12px;
+  color:var(--primary);
+}
+
+.offer-strip{
+  background:#E8F5E9;
+  color:var(--primary);
+  padding:14px;
+  border-radius:18px;
+  margin-bottom:20px;
+  font-size:13px;
+  font-weight:600;
 }
 
 .hidden{
@@ -147,118 +345,130 @@ button:hover{
   text-align:center;
 }
 
-footer{
-  background:#1b5e20;
+.toast{
+  position:fixed;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#111827;
   color:white;
-  text-align:center;
-  padding:20px;
-  margin-top:30px;
+  padding:12px 18px;
+  border-radius:12px;
+  z-index:5000;
+  display:none;
 }
 
-@media(max-width:768px){
+.checkout-box{
+  margin-top:18px;
+}
 
-  .govinda{
-    font-size:45px;
+.profile-box{
+  background:#F9FAFB;
+  padding:15px;
+  border-radius:18px;
+  margin-bottom:18px;
+}
+
+.delivery-pill{
+  background:#E8F5E9;
+  color:var(--primary);
+  padding:8px 12px;
+  border-radius:50px;
+  display:inline-block;
+  margin-top:10px;
+  font-size:12px;
+}
+
+@media(max-width:420px){
+  .products{
+    grid-template-columns:1fr;
   }
-
-  header h1{
-    font-size:28px;
-  }
-
 }
 
 </style>
-
 </head>
 
 <body>
 
+<div class="toast" id="toast"></div>
+
 <header>
 
-<div class="govinda">🦚</div>
+<div class="topbar">
 
-<h1>Govinda Fresh Veg & Fruits</h1>
+<div class="brand">
+<div class="logo">🦚</div>
 
-<p>Freshness Delivered Daily</p>
+<div>
+<h1>Govinda Fresh</h1>
+<p>Pune SuperMart Delivery</p>
+</div>
+</div>
 
-<br>
+<div class="cart-badge">
+🛒 <span id="cartCount">0</span>
+</div>
 
-<h3>जय श्री कृष्णा • गोविंदा गोविंदा</h3>
+</div>
+
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="Search groceries, fruits, vegetables..." onkeyup="searchProducts()">
+</div>
+
+<div class="delivery-pill">
+⚡ Delivery in 30 mins
+</div>
 
 </header>
 
+<div class="banner-slider">
+<div class="banner">
+
+<div>
+<h2>Fresh Groceries</h2>
+<p>Vegetables, Fruits & Daily Essentials</p>
+</div>
+
+<div style="font-size:52px;">🛍️</div>
+
+</div>
+</div>
+
 <div class="container">
 
-<!-- AUTH SECTION -->
+<div class="offer-strip">
+🔥 Free delivery above ₹499 • Flat 10% OFF on first order
+</div>
 
 <div class="card" id="authSection">
 
-<!-- REGISTER -->
-
 <div id="registerBlock">
 
-<h2>New Customer Registration</h2>
+<h2>Create Account</h2>
 
 <form id="registrationForm">
 
-<input type="text"
-id="name"
-placeholder="Full Name"
-required>
+<input type="text" placeholder="Full Name" required>
+<input type="email" placeholder="Email ID" required>
+<input type="text" placeholder="WhatsApp Number" required>
+<input type="text" placeholder="Society Name" required>
+<input type="text" placeholder="Building Number" required>
+<input type="text" placeholder="Flat Number" required>
+<input type="password" placeholder="Password" required>
 
-<input type="email"
-id="email"
-placeholder="Email ID"
-required>
-
-<input type="text"
-id="whatsapp"
-placeholder="WhatsApp Number"
-required>
-
-<input type="text"
-id="society"
-placeholder="Society Name"
-required>
-
-<input type="text"
-id="building"
-placeholder="Building Number"
-required>
-
-<input type="text"
-id="flat"
-placeholder="Flat Number"
-required>
-
-<input type="password"
-id="password"
-placeholder="Create Password"
-required>
-
-<button type="submit">
-Register Now
-</button>
+<button type="submit">Register Now</button>
 
 </form>
 
-<br><br>
-
-<div class="center">
-
-<p>Already Registered?</p>
-
 <br>
 
-<button type="button" onclick="showLogin()">
-Login Here
-</button>
-
+<div class="center">
+<p>Already Registered?</p>
+<br>
+<button onclick="showLogin()">Login Here</button>
 </div>
 
 </div>
-
-<!-- LOGIN -->
 
 <div id="loginBlock" style="display:none;">
 
@@ -266,81 +476,80 @@ Login Here
 
 <form id="loginForm">
 
-<input type="text"
-id="loginWhatsapp"
-placeholder="WhatsApp Number"
-required>
+<input type="text" id="loginWhatsapp" placeholder="WhatsApp Number" required>
 
-<input type="password"
-id="loginPassword"
-placeholder="Password"
-required>
+<input type="password" placeholder="Password" required>
 
-<button type="submit">
-Login
-</button>
+<button type="submit">Login</button>
 
 </form>
 
-<br><br>
-
-<div class="center">
-
-<p>New User?</p>
-
 <br>
 
-<button type="button" onclick="showRegister()">
-Create Account
-</button>
+<div class="center">
+<p>New User?</p>
+<br>
+<button onclick="showRegister()">Create Account</button>
 </div>
 
 </div>
 
 </div>
 
-<!-- SHOP SECTION -->
+<div id="shopSection" class="hidden">
 
-<div class="hidden" id="shopSection">
+<div class="category-tabs">
+
+<button class="tab-btn" onclick="showTab('veg')">🥦 Vegetables</button>
+
+<button class="tab-btn" onclick="showTab('fruits')">🍎 Fruits</button>
+
+<button class="tab-btn" onclick="showTab('grocery')">🛍️ Grocery</button>
+
+</div>
+
+<div id="vegSection" class="products"></div>
+
+<div id="fruitSection" class="products hidden"></div>
+
+<div id="grocerySection" class="products hidden"></div>
 
 <div class="card">
 
-<div class="tabs">
+<div class="profile-box">
 
-<button class="tab-btn"
-onclick="showTab('veg')">
-Vegetables
-</button>
+<strong>Delivery Address</strong>
 
-<button class="tab-btn"
-onclick="showTab('fruits')">
-Fruits
-</button>
+<p>Pune, Maharashtra</p>
 
 </div>
 
-<div id="vegSection"
-class="products"></div>
-
-<div id="fruitSection"
-class="products"
-style="display:none"></div>
-
-</div>
-
-<!-- CART -->
-
-<div class="card">
-
-<h2>Your Cart</h2>
+<h2>Checkout</h2>
 
 <div id="cartItems"></div>
 
+<div class="checkout-box">
+
+<select id="deliverySlot">
+<option>7 AM - 9 AM</option>
+<option>9 AM - 11 AM</option>
+<option>5 PM - 7 PM</option>
+</select>
+
+</div>
+
+<div class="checkout-box">
+
+<select id="paymentMode">
+<option>Cash On Delivery</option>
+<option>UPI</option>
+<option>Credit / Debit Card</option>
+</select>
+
+</div>
+
 <div class="total">
-
-Total: ₹
-<span id="cartTotal">0</span>
-
+₹ <span id="cartTotal">0</span>
 </div>
 
 <br>
@@ -355,459 +564,344 @@ Place Order
 
 </div>
 
-<footer>
+<div class="floating-cart">
 
-© 2026 Govinda Fresh Veg & Fruits | Pune
+<div>
+<strong><span id="cartItemsCount">0</span> Items</strong>
+<p>₹ <span id="cartTotalBottom">0</span></p>
+</div>
 
-</footer>
+<button onclick="window.scrollTo(0,document.body.scrollHeight)">
+View Cart
+</button>
+
+</div>
+
+<div class="bottom-nav">
+
+<div>🏠<br>Home</div>
+<div>📦<br>Orders</div>
+<div>🛒<br>Cart</div>
+<div>👤<br>Profile</div>
+
+</div>
 
 <script>
 
-const API_URL =
-'https://script.google.com/macros/s/AKfycbxQUpcwbwiYMiDc-4CKlSRupX83lmuli9KsYZj57PVCvYbpVY3IhuY83ClF_7yOKDqZ-Q/exec';
+const sampleProducts = {
 
-let currentUser = null;
+vegetables:[
+["Tomato","Farm fresh tomatoes","40","https://images.unsplash.com/photo-1546094096-0df4bcaaa337"],
+["Potato","Organic potatoes","30","https://images.unsplash.com/photo-1518977676601-b53f82aba655"],
+["Onion","Premium onions","35","https://images.unsplash.com/photo-1508747703725-719777637510"]
+],
+
+fruits:[
+["Apple","Fresh apples","120","https://images.unsplash.com/photo-1567306226416-28f0efdc88ce"],
+["Banana","Fresh bananas","60","https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e"],
+["Orange","Juicy oranges","90","https://images.unsplash.com/photo-1580052614034-c55d20bfee3b"]
+],
+
+grocery:[
+["Rice","Premium basmati rice","85","https://images.unsplash.com/photo-1586201375761-83865001e31c"],
+["Sugar","Fine crystal sugar","48","https://images.unsplash.com/photo-1615485290382-441e4d049cb5"],
+["Cooking Oil","Refined sunflower oil","160","https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5"]
+]
+
+};
 
 let cart = [];
 
-/* =========================
-   LOGIN / REGISTER SWITCH
-========================= */
+function showToast(msg){
+
+  const toast =
+  document.getElementById('toast');
+
+  toast.innerText = msg;
+
+  toast.style.display='block';
+
+  setTimeout(()=>{
+    toast.style.display='none';
+  },2000);
+
+}
 
 function showLogin(){
 
-  document.getElementById(
-    'registerBlock'
-  ).style.display='none';
-
-  document.getElementById(
-    'loginBlock'
-  ).style.display='block';
+  document.getElementById('registerBlock').style.display='none';
+  document.getElementById('loginBlock').style.display='block';
 
 }
 
 function showRegister(){
 
-  document.getElementById(
-    'registerBlock'
-  ).style.display='block';
-
-  document.getElementById(
-    'loginBlock'
-  ).style.display='none';
+  document.getElementById('registerBlock').style.display='block';
+  document.getElementById('loginBlock').style.display='none';
 
 }
 
-/* =========================
-   LOAD PRODUCTS
-========================= */
+document.getElementById('registrationForm')
+.addEventListener('submit',function(e){
 
-async function fetchProducts(type, elementId){
+e.preventDefault();
 
-  try{
+showToast("Registration successful");
 
-    const response =
-    await fetch(
-      `${API_URL}?action=getProducts&type=${type}`
-    );
+showLogin();
 
-    const data =
-    await response.json();
+});
 
-    renderProducts(data, elementId);
+document.getElementById('loginForm')
+.addEventListener('submit',function(e){
 
-  }
-  catch(error){
+e.preventDefault();
 
-    console.log(error);
+document.getElementById('authSection')
+.style.display='none';
 
-  }
+document.getElementById('shopSection')
+.classList.remove('hidden');
 
-}
+loadProducts();
 
-function renderProducts(data, elementId){
+showToast("Welcome back");
 
-  let html='';
+});
 
-  data.slice(1).forEach(item=>{
+function loadProducts(){
 
-    html += `
+  renderProducts(sampleProducts.vegetables,'vegSection');
 
-      <div class="product-card">
+  renderProducts(sampleProducts.fruits,'fruitSection');
 
-        <h3>${item[0]}</h3>
-
-        <p>${item[1]}</p>
-
-        <div class="price">
-        ₹ ${item[2]}
-        </div>
-
-        <input
-        type="number"
-        min="1"
-        value="1"
-        id="qty-${item[0]}"
-        class="qty-box">
-
-        <br><br>
-
-        <button onclick="addToCart(
-        '${item[0]}',
-        '${item[2]}'
-        )">
-
-        Add To Cart
-
-        </button>
-
-      </div>
-
-    `;
-
-  });
-
-  document
-  .getElementById(elementId)
-  .innerHTML = html;
+  renderProducts(sampleProducts.grocery,'grocerySection');
 
 }
 
-/* =========================
-   TABS
-========================= */
+function renderProducts(data,section){
+
+let html='';
+
+data.forEach(item=>{
+
+html += `
+
+<div class="product-card product-item">
+
+<div class="badge">Fresh</div>
+
+<img src="${item[3]}" class="product-image">
+
+<div class="product-content">
+
+<h3>${item[0]}</h3>
+
+<p>${item[1]}</p>
+
+<div class="price-row">
+<div class="price">₹ ${item[2]}</div>
+<div style="font-size:11px;color:#6B7280;">per kg</div>
+</div>
+
+<div class="qty-controls">
+
+<button onclick="changeQty('${item[0]}',-1)">−</button>
+
+<input type="number" value="1" min="1" id="qty-${item[0]}">
+
+<button onclick="changeQty('${item[0]}',1)">+</button>
+
+</div>
+
+<button class="add-btn"
+onclick="addToCart('${item[0]}','${item[2]}')">
+
+Add To Cart
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+document.getElementById(section).innerHTML = html;
+
+}
 
 function showTab(tab){
 
-  if(tab === 'veg'){
+document.getElementById('vegSection').classList.add('hidden');
+document.getElementById('fruitSection').classList.add('hidden');
+document.getElementById('grocerySection').classList.add('hidden');
 
-    document
-    .getElementById('vegSection')
-    .style.display='grid';
+if(tab==='veg'){
+document.getElementById('vegSection').classList.remove('hidden');
+}
 
-    document
-    .getElementById('fruitSection')
-    .style.display='none';
+if(tab==='fruits'){
+document.getElementById('fruitSection').classList.remove('hidden');
+}
 
-  }
-  else{
-
-    document
-    .getElementById('vegSection')
-    .style.display='none';
-
-    document
-    .getElementById('fruitSection')
-    .style.display='grid';
-
-  }
+if(tab==='grocery'){
+document.getElementById('grocerySection').classList.remove('hidden');
+}
 
 }
 
-/* =========================
-   REGISTRATION
-========================= */
+function searchProducts(){
 
-document
-.getElementById('registrationForm')
-.addEventListener('submit', async function(e){
+const input =
+document.getElementById('searchInput')
+.value.toLowerCase();
 
-  e.preventDefault();
+const items =
+document.querySelectorAll('.product-item');
 
-  const payload = {
+items.forEach(item=>{
 
-    action:'register',
+const text =
+item.innerText.toLowerCase();
 
-    name:
-    document.getElementById('name').value,
-
-    email:
-    document.getElementById('email').value,
-
-    whatsapp:
-    document.getElementById('whatsapp').value,
-
-    society:
-    document.getElementById('society').value,
-
-    building:
-    document.getElementById('building').value,
-
-    flat:
-    document.getElementById('flat').value,
-
-    password:
-    document.getElementById('password').value
-
-  };
-
-  try{
-
-    const response =
-    await fetch(API_URL, {
-
-      method:'POST',
-
-      headers:{
-        'Content-Type':'text/plain;charset=utf-8'
-      },
-
-      body:JSON.stringify(payload)
-
-    });
-
-    const result =
-    await response.json();
-
-    console.log(result);
-
-    if(result.status === 'SUCCESS'){
-
-      alert('Registration Successful');
-
-      document
-      .getElementById('registrationForm')
-      .reset();
-
-      showLogin();
-
-    }
-    else if(result.status === 'EXISTS'){
-
-      alert('User already exists');
-
-    }
-    else{
-
-      alert('Registration Failed');
-
-    }
-
-  }
-  catch(error){
-
-    console.log(error);
-
-    alert('Registration Failed');
-
-  }
+item.style.display =
+text.includes(input)
+? 'block'
+: 'none';
 
 });
-
-/* =========================
-   LOGIN
-========================= */
-
-document
-.getElementById('loginForm')
-.addEventListener('submit', async function(e){
-
-  e.preventDefault();
-
-  const payload = {
-
-    action:'login',
-
-    whatsapp:
-    document.getElementById('loginWhatsapp').value.trim(),
-
-    password:
-    document.getElementById('loginPassword').value.trim()
-
-  };
-
-  try{
-
-    const response =
-    await fetch(API_URL, {
-
-      method:'POST',
-
-      headers:{
-        'Content-Type':'text/plain;charset=utf-8'
-      },
-
-      body:JSON.stringify(payload)
-
-    });
-
-    const result =
-    await response.json();
-
-    console.log(result);
-
-    if(result.status === 'SUCCESS'){
-
-      currentUser = result.user;
-
-      document
-      .getElementById('authSection')
-      .style.display='none';
-
-      document
-      .getElementById('shopSection')
-      .classList.remove('hidden');
-
-      fetchProducts(
-        'vegetables',
-        'vegSection'
-      );
-
-      fetchProducts(
-        'fruits',
-        'fruitSection'
-      );
-
-    }
-    else{
-
-      alert('Invalid Login');
-
-    }
-
-  }
-  catch(error){
-
-    console.log(error);
-
-    alert('Login Failed');
-
-  }
-
-});
-
-/* =========================
-   ADD TO CART
-========================= */
-
-function addToCart(item, price){
-
-  const qty =
-  document.getElementById(`qty-${item}`).value;
-
-  const total =
-  Number(price) * Number(qty);
-
-  cart.push({
-
-    item,
-    qty,
-    price,
-    total
-
-  });
-
-  renderCart();
 
 }
 
-/* =========================
-   RENDER CART
-========================= */
+function changeQty(item,change){
+
+const input =
+document.getElementById(`qty-${item}`);
+
+let val = Number(input.value);
+
+val += change;
+
+if(val<1) val=1;
+
+input.value = val;
+
+}
+
+function addToCart(item,price){
+
+const qty =
+Number(document.getElementById(`qty-${item}`).value);
+
+const total =
+qty * Number(price);
+
+cart.push({
+item,
+qty,
+price,
+total
+});
+
+renderCart();
+
+showToast("Added to cart");
+
+}
 
 function renderCart(){
 
-  let html='';
+let html='';
 
-  let grandTotal=0;
+let grandTotal=0;
 
-  cart.forEach(c=>{
+cart.forEach(c=>{
 
-    grandTotal += c.total;
+grandTotal += c.total;
 
-    html += `
+html += `
 
-      <div class="cart-item">
+<div class="cart-item">
 
-      <strong>${c.item}</strong><br>
+<strong>${c.item}</strong><br>
 
-      Qty: ${c.qty}<br>
+Qty: ${c.qty}<br>
 
-      ₹ ${c.total}
+₹ ${c.total}
 
-      </div>
+</div>
 
-    `;
+`;
 
-  });
+});
 
-  document
-  .getElementById('cartItems')
-  .innerHTML = html;
+document.getElementById('cartItems')
+.innerHTML = html;
 
-  document
-  .getElementById('cartTotal')
-  .innerText = grandTotal;
+document.getElementById('cartTotal')
+.innerText = grandTotal;
+
+document.getElementById('cartTotalBottom')
+.innerText = grandTotal;
+
+document.getElementById('cartCount')
+.innerText = cart.length;
+
+document.getElementById('cartItemsCount')
+.innerText = cart.length;
 
 }
 
-/* =========================
-   PLACE ORDER
-========================= */
+function submitOrder(){
 
-async function submitOrder(){
+if(cart.length===0){
 
-  if(cart.length === 0){
+showToast("Cart is empty");
 
-    alert('Cart is empty');
+return;
 
-    return;
+}
 
-  }
+let total=0;
 
-  const payload = {
+cart.forEach(c=>{
+total += c.total;
+});
 
-    action:'placeOrder',
+const orderText =
+cart.map(c =>
+`${c.item} x ${c.qty} = ₹${c.total}`
+).join('\n');
 
-    user:currentUser,
+const finalMessage = `
+🛒 NEW ORDER
 
-    cart:cart
+Items:
+${orderText}
 
-  };
+Delivery Slot:
+${document.getElementById('deliverySlot').value}
 
-  try{
+Payment:
+${document.getElementById('paymentMode').value}
 
-    const response =
-    await fetch(API_URL, {
+Total Amount:
+₹${total}
+`;
 
-      method:'POST',
+window.open(
+`https://wa.me/919999999999?text=${encodeURIComponent(finalMessage)}`,
+'_blank'
+);
 
-      headers:{
-        'Content-Type':'text/plain;charset=utf-8'
-      },
+showToast("Order placed successfully");
 
-      body:JSON.stringify(payload)
+cart=[];
 
-    });
-
-    const result =
-    await response.json();
-
-    console.log(result);
-
-    if(result.status === 'ORDER_SAVED'){
-
-      alert('Order Placed Successfully');
-
-      cart = [];
-
-      renderCart();
-
-    }
-    else{
-
-      alert('Order Failed');
-
-    }
-
-  }
-  catch(error){
-
-    console.log(error);
-
-    alert('Order Failed');
-
-  }
+renderCart();
 
 }
 
