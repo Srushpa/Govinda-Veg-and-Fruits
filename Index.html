@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Govinda Fresh Veg & Fruits</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#f5f5f5;
+  color:#333;
+}
+
+header{
+  background:linear-gradient(135deg,#2e7d32,#66bb6a);
+  color:white;
+  text-align:center;
+  padding:30px 20px;
+}
+
+.govinda{
+  font-size:60px;
+  margin-bottom:10px;
+}
+
+header h1{
+  font-size:38px;
+}
+
+.container{
+  width:92%;
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+}
+
+.card{
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  margin-bottom:25px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+h2{
+  margin-bottom:20px;
+  color:#2e7d32;
+}
+
+form{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+}
+
+input{
+  padding:12px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:15px;
+}
+
+button{
+  background:#2e7d32;
+  color:white;
+  border:none;
+  padding:12px 20px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:15px;
+  font-weight:bold;
+}
+
+button:hover{
+  background:#1b5e20;
+}
+
+.tabs{
+  margin-bottom:20px;
+}
+
+.tab-btn{
+  margin-right:10px;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:20px;
+}
+
+.product-card{
+  background:#fafafa;
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:18px;
+}
+
+.product-card h3{
+  color:#2e7d32;
+  margin-bottom:10px;
+}
+
+.price{
+  font-size:22px;
+  font-weight:bold;
+  color:#1b5e20;
+  margin-top:10px;
+}
+
+.qty-box{
+  width:80px;
+  padding:8px;
+  margin-top:10px;
+}
+
+.cart-item{
+  border-bottom:1px solid #ddd;
+  padding:10px 0;
+}
+
+.total{
+  font-size:24px;
+  font-weight:bold;
+  color:#1b5e20;
+  margin-top:20px;
+}
+
+.hidden{
+  display:none;
+}
+
+.center{
+  text-align:center;
+}
+
+footer{
+  background:#1b5e20;
+  color:white;
+  text-align:center;
+  padding:20px;
+  margin-top:30px;
+}
+
+@media(max-width:768px){
+
+  .govinda{
+    font-size:45px;
+  }
+
+  header h1{
+    font-size:28px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="govinda">🦚</div>
+
+<h1>Govinda Fresh Veg & Fruits</h1>
+
+<p>Freshness Delivered Daily</p>
+
+<br>
+
+<h3>जय श्री कृष्णा • गोविंदा गोविंदा</h3>
+
+</header>
+
+<div class="container">
+
+<!-- AUTH SECTION -->
+
+<div class="card" id="authSection">
+
+<!-- REGISTER -->
+
+<div id="registerBlock">
+
+<h2>New Customer Registration</h2>
+
+<form id="registrationForm">
+
+<input type="text"
+id="name"
+placeholder="Full Name"
+required>
+
+<input type="email"
+id="email"
+placeholder="Email ID"
+required>
+
+<input type="text"
+id="whatsapp"
+placeholder="WhatsApp Number"
+required>
+
+<input type="text"
+id="society"
+placeholder="Society Name"
+required>
+
+<input type="text"
+id="building"
+placeholder="Building Number"
+required>
+
+<input type="text"
+id="flat"
+placeholder="Flat Number"
+required>
+
+<input type="password"
+id="password"
+placeholder="Create Password"
+required>
+
+<button type="submit">
+Register Now
+</button>
+
+</form>
+
+<br><br>
+
+<div class="center">
+
+<p>Already Registered?</p>
+
+<br>
+
+<button type="button" onclick="showLogin()">
+Login Here
+</button>
+
+</div>
+
+</div>
+
+<!-- LOGIN -->
+
+<div id="loginBlock" style="display:none;">
+
+<h2>Customer Login</h2>
+
+<form id="loginForm">
+
+<input type="text"
+id="loginWhatsapp"
+placeholder="WhatsApp Number"
+required>
+
+<input type="password"
+id="loginPassword"
+placeholder="Password"
+required>
+
+<button type="submit">
+Login
+</button>
+
+</form>
+
+<br><br>
+
+<div class="center">
+
+<p>New User?</p>
+
+<br>
+
+<button type="button" onclick="showRegister()">
+Create Account
+</button>
+</div>
+
+</div>
+
+</div>
+
+<!-- SHOP SECTION -->
+
+<div class="hidden" id="shopSection">
+
+<div class="card">
+
+<div class="tabs">
+
+<button class="tab-btn"
+onclick="showTab('veg')">
+Vegetables
+</button>
+
+<button class="tab-btn"
+onclick="showTab('fruits')">
+Fruits
+</button>
+
+</div>
+
+<div id="vegSection"
+class="products"></div>
+
+<div id="fruitSection"
+class="products"
+style="display:none"></div>
+
+</div>
+
+<!-- CART -->
+
+<div class="card">
+
+<h2>Your Cart</h2>
+
+<div id="cartItems"></div>
+
+<div class="total">
+
+Total: ₹
+<span id="cartTotal">0</span>
+
+</div>
+
+<br>
+
+<button onclick="submitOrder()">
+Place Order
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+© 2026 Govinda Fresh Veg & Fruits | Pune
+
+</footer>
+
+<script>
+
+const API_URL =
+'https://script.google.com/macros/s/AKfycbxQUpcwbwiYMiDc-4CKlSRupX83lmuli9KsYZj57PVCvYbpVY3IhuY83ClF_7yOKDqZ-Q/exec';
+
+let currentUser = null;
+
+let cart = [];
+
+/* =========================
+   LOGIN / REGISTER SWITCH
+========================= */
+
+function showLogin(){
+
+  document.getElementById(
+    'registerBlock'
+  ).style.display='none';
+
+  document.getElementById(
+    'loginBlock'
+  ).style.display='block';
+
+}
+
+function showRegister(){
+
+  document.getElementById(
+    'registerBlock'
+  ).style.display='block';
+
+  document.getElementById(
+    'loginBlock'
+  ).style.display='none';
+
+}
+
+/* =========================
+   LOAD PRODUCTS
+========================= */
+
+async function fetchProducts(type, elementId){
+
+  try{
+
+    const response =
+    await fetch(
+      `${API_URL}?action=getProducts&type=${type}`
+    );
+
+    const data =
+    await response.json();
+
+    renderProducts(data, elementId);
+
+  }
+  catch(error){
+
+    console.log(error);
+
+  }
+
+}
+
+function renderProducts(data, elementId){
+
+  let html='';
+
+  data.slice(1).forEach(item=>{
+
+    html += `
+
+      <div class="product-card">
+
+        <h3>${item[0]}</h3>
+
+        <p>${item[1]}</p>
+
+        <div class="price">
+        ₹ ${item[2]}
+        </div>
+
+        <input
+        type="number"
+        min="1"
+        value="1"
+        id="qty-${item[0]}"
+        class="qty-box">
+
+        <br><br>
+
+        <button onclick="addToCart(
+        '${item[0]}',
+        '${item[2]}'
+        )">
+
+        Add To Cart
+
+        </button>
+
+      </div>
+
+    `;
+
+  });
+
+  document
+  .getElementById(elementId)
+  .innerHTML = html;
+
+}
+
+/* =========================
+   TABS
+========================= */
+
+function showTab(tab){
+
+  if(tab === 'veg'){
+
+    document
+    .getElementById('vegSection')
+    .style.display='grid';
+
+    document
+    .getElementById('fruitSection')
+    .style.display='none';
+
+  }
+  else{
+
+    document
+    .getElementById('vegSection')
+    .style.display='none';
+
+    document
+    .getElementById('fruitSection')
+    .style.display='grid';
+
+  }
+
+}
+
+/* =========================
+   REGISTRATION
+========================= */
+
+document
+.getElementById('registrationForm')
+.addEventListener('submit', async function(e){
+
+  e.preventDefault();
+
+  const payload = {
+
+    action:'register',
+
+    name:
+    document.getElementById('name').value,
+
+    email:
+    document.getElementById('email').value,
+
+    whatsapp:
+    document.getElementById('whatsapp').value,
+
+    society:
+    document.getElementById('society').value,
+
+    building:
+    document.getElementById('building').value,
+
+    flat:
+    document.getElementById('flat').value,
+
+    password:
+    document.getElementById('password').value
+
+  };
+
+  try{
+
+    const response =
+    await fetch(API_URL, {
+
+      method:'POST',
+
+      headers:{
+        'Content-Type':'text/plain;charset=utf-8'
+      },
+
+      body:JSON.stringify(payload)
+
+    });
+
+    const result =
+    await response.json();
+
+    console.log(result);
+
+    if(result.status === 'SUCCESS'){
+
+      alert('Registration Successful');
+
+      document
+      .getElementById('registrationForm')
+      .reset();
+
+      showLogin();
+
+    }
+    else if(result.status === 'EXISTS'){
+
+      alert('User already exists');
+
+    }
+    else{
+
+      alert('Registration Failed');
+
+    }
+
+  }
+  catch(error){
+
+    console.log(error);
+
+    alert('Registration Failed');
+
+  }
+
+});
+
+/* =========================
+   LOGIN
+========================= */
+
+document
+.getElementById('loginForm')
+.addEventListener('submit', async function(e){
+
+  e.preventDefault();
+
+  const payload = {
+
+    action:'login',
+
+    whatsapp:
+    document.getElementById('loginWhatsapp').value.trim(),
+
+    password:
+    document.getElementById('loginPassword').value.trim()
+
+  };
+
+  try{
+
+    const response =
+    await fetch(API_URL, {
+
+      method:'POST',
+
+      headers:{
+        'Content-Type':'text/plain;charset=utf-8'
+      },
+
+      body:JSON.stringify(payload)
+
+    });
+
+    const result =
+    await response.json();
+
+    console.log(result);
+
+    if(result.status === 'SUCCESS'){
+
+      currentUser = result.user;
+
+      document
+      .getElementById('authSection')
+      .style.display='none';
+
+      document
+      .getElementById('shopSection')
+      .classList.remove('hidden');
+
+      fetchProducts(
+        'vegetables',
+        'vegSection'
+      );
+
+      fetchProducts(
+        'fruits',
+        'fruitSection'
+      );
+
+    }
+    else{
+
+      alert('Invalid Login');
+
+    }
+
+  }
+  catch(error){
+
+    console.log(error);
+
+    alert('Login Failed');
+
+  }
+
+});
+
+/* =========================
+   ADD TO CART
+========================= */
+
+function addToCart(item, price){
+
+  const qty =
+  document.getElementById(`qty-${item}`).value;
+
+  const total =
+  Number(price) * Number(qty);
+
+  cart.push({
+
+    item,
+    qty,
+    price,
+    total
+
+  });
+
+  renderCart();
+
+}
+
+/* =========================
+   RENDER CART
+========================= */
+
+function renderCart(){
+
+  let html='';
+
+  let grandTotal=0;
+
+  cart.forEach(c=>{
+
+    grandTotal += c.total;
+
+    html += `
+
+      <div class="cart-item">
+
+      <strong>${c.item}</strong><br>
+
+      Qty: ${c.qty}<br>
+
+      ₹ ${c.total}
+
+      </div>
+
+    `;
+
+  });
+
+  document
+  .getElementById('cartItems')
+  .innerHTML = html;
+
+  document
+  .getElementById('cartTotal')
+  .innerText = grandTotal;
+
+}
+
+/* =========================
+   PLACE ORDER
+========================= */
+
+async function submitOrder(){
+
+  if(cart.length === 0){
+
+    alert('Cart is empty');
+
+    return;
+
+  }
+
+  const payload = {
+
+    action:'placeOrder',
+
+    user:currentUser,
+
+    cart:cart
+
+  };
+
+  try{
+
+    const response =
+    await fetch(API_URL, {
+
+      method:'POST',
+
+      headers:{
+        'Content-Type':'text/plain;charset=utf-8'
+      },
+
+      body:JSON.stringify(payload)
+
+    });
+
+    const result =
+    await response.json();
+
+    console.log(result);
+
+    if(result.status === 'ORDER_SAVED'){
+
+      alert('Order Placed Successfully');
+
+      cart = [];
+
+      renderCart();
+
+    }
+    else{
+
+      alert('Order Failed');
+
+    }
+
+  }
+  catch(error){
+
+    console.log(error);
+
+    alert('Order Failed');
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
